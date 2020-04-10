@@ -1,6 +1,6 @@
 # Mesobe Hasab
 
-A collection of best amaharic quotes from diffrent sources
+A collection of best amharic quotes from diffrent sources
 
 ![Mesobe Hasab Splash Screen](./assets/img/splash.jpg)
 
