@@ -56,12 +56,21 @@ class _QuoteListState extends State<QuoteList> {
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
-                        child: FadeInImage(
-                          placeholder: AssetImage(
-                            'assets/img/loading.gif',
+                        child: GestureDetector(
+                          child: Hero(
+                            tag: 'img'+index.toString(),
+                            child: FadeInImage(
+                              placeholder: AssetImage(
+                                'assets/img/loading.gif',
+                              ),
+                              image: AssetImage(imgUrls[index]),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          image: AssetImage(imgUrls[index]),
-                          fit: BoxFit.cover,
+                          onTap: (){
+                            Navigator.pushNamed(context, '/viewQuote',
+                                arguments: {'img': imgUrls[index]});
+                          },
                         )));
               },
               staggeredTileBuilder: (index) {
