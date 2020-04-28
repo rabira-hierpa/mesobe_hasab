@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mesobe_hasab/pages/HomeScreen.dart';
+import 'package:mesobe_hasab/pages/info.dart';
 import 'package:mesobe_hasab/pages/splash.dart';
+import 'pages/home.dart';
 
 void main() => runApp(MaterialApp(
-    initialRoute: '/home',
-    routes:{
-      '/': (context) => SplashScreen(),
-      '/home': (context) => HomeScreen()
-    }
-));
-
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {'/': (context) => QuoteList(), '/info': (context) => InfoPage()},
+    ));
