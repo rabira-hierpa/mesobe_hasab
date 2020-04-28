@@ -20,6 +20,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_spinkit: ^4.1.2+1
+  flutter_staggered_grid_view: ^0.3.0
+  transparent_image: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -42,6 +44,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
 assets:
   - assets/img
+  - assets/quotes
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
