@@ -20,7 +20,7 @@ class ViewQuote extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 70,
+                height: 150,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -31,7 +31,7 @@ class ViewQuote extends StatelessWidget {
                       color: Colors.red,
                       child: Icon(
                         Icons.share,
-                        size: 26,
+                        size: 46,
                       ),
                       onPressed: () {},
                       shape: CircleBorder(),
