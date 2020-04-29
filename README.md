@@ -2,7 +2,7 @@
 
 A collection of best amharic quotes from different sources
 
-![Mesobe Hasab Splash Screen](./assets/promo/mesobe-hasab-promo.jpg)
+![Mesobe Hasab Splash Screen](./assets/promo/mesobe-hasab-promo.png)
 
 ## Getting Started
 
