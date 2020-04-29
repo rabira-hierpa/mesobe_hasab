@@ -12,7 +12,7 @@ class _QuoteListState extends State<QuoteList> {
   @override
   void initState() {
     super.initState();
-    for (var i = 1; i <= 16; i++) {
+    for (var i = 1; i <= 31; i++) {
       imgUrls.add("assets/quotes/$i.jpg");
     }
     print(imgUrls);
