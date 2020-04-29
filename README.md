@@ -22,7 +22,7 @@ flutter run
 
 If you want to contribute to this project you can view the progrss on the ora project tool
 
-[Mesobe-Hasab-Project]('https://ora.pm/project/222951/kanban')
+[Mesobe-Hasab-Project](https://ora.pm/project/222951/kanban)
 
 ### Contact Us 
     Kiya Tolcah - tokiyatolcha@gmail.com
