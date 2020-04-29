@@ -12,7 +12,7 @@ class _QuoteListState extends State<QuoteList> {
   @override
   void initState() {
     super.initState();
-    for (var i = 1; i <= 16; i++) {
+    for (var i = 1; i <= 31; i++) {
       imgUrls.add("assets/quotes/$i.jpg");
     }
     print(imgUrls);
@@ -56,12 +56,21 @@ class _QuoteListState extends State<QuoteList> {
                         borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
-                        child: FadeInImage(
-                          placeholder: AssetImage(
-                            'assets/img/loading.gif',
+                        child: GestureDetector(
+                          child: Hero(
+                            tag: 'img'+index.toString(),
+                            child: FadeInImage(
+                              placeholder: AssetImage(
+                                'assets/img/loading.gif',
+                              ),
+                              image: AssetImage(imgUrls[index]),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          image: AssetImage(imgUrls[index]),
-                          fit: BoxFit.cover,
+                          onTap: (){
+                            Navigator.pushNamed(context, '/viewQuote',
+                                arguments: {'img': imgUrls[index]});
+                          },
                         )));
               },
               staggeredTileBuilder: (index) {
