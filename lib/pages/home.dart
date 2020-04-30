@@ -7,7 +7,6 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  int n = 1;
   List<String> imgUrls = [];
   @override
   void initState() {
