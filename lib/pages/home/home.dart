@@ -22,7 +22,7 @@ class _QuoteListState extends State<QuoteList> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'መሶበ ሃሳብ | Mesobe Hasab',
+          'መሶበ ሃሳብ',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
