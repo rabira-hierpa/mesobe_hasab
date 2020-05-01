@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ViewQuote extends StatelessWidget {
+class ViewQuote extends StatefulWidget {
+  @override
+  _ViewQuoteState createState() => _ViewQuoteState();
+}
+
+class _ViewQuoteState extends State<ViewQuote> {
+  double _scale=1.0;
+  double _previousScale=1.0;
   Map imageData = {};
   @override
   Widget build(BuildContext context) {
@@ -14,4 +21,5 @@ class ViewQuote extends StatelessWidget {
       ),
     );
   }
+
 }
