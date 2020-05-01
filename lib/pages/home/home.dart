@@ -14,7 +14,6 @@ class _QuoteListState extends State<QuoteList> {
     for (var i = 1; i <= 31; i++) {
       imgUrls.add("assets/quotes/$i.jpg");
     }
-    print(imgUrls);
   }
 
   @override
