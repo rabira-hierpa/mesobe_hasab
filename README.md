@@ -25,8 +25,8 @@ If you want to contribute to this project you can view the progrss on the ora pr
 [Mesobe-Hasab-Project](https://ora.pm/project/222951/kanban)
 
 ### Contact Us 
-    Kiya Tolcah - tokiyatolcha@gmail.com
-    Rabra Hierpa - rabira.hierpa@gmail.com
+    Kiya Tolcah - tokiyatolcha@gmail.com or @KiyaTolcha (Telegram)
+    Rabra Hierpa - rabira.hierpa@gmail.com or @rebera (Telegram)
 
 ### Licence
     MIT Licence
