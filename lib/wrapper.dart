@@ -19,7 +19,13 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    print(user);
-    return user == null ? AuthScreen() : QuoteList();
+    ///debug only
+    print("AnonID - " + user.toString());
+    if(user == null){
+      return AuthScreen();
+    }else {
+      return QuoteList();
+    }
+//    return user == null ? AuthScreen() : QuoteList();
   }
 }
