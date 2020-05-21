@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:mesobe_hasab/services/auth_service.dart';
 
 class QuoteList extends StatefulWidget {
   @override
@@ -7,6 +9,7 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
+  final AuthService _authService = AuthService();
   List<String> imgUrls = [];
   @override
   void initState() {
@@ -14,7 +17,6 @@ class _QuoteListState extends State<QuoteList> {
     for (var i = 1; i <= 31; i++) {
       imgUrls.add("assets/quotes/$i.jpg");
     }
-    print(imgUrls);
   }
 
   @override
@@ -22,22 +24,25 @@ class _QuoteListState extends State<QuoteList> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'መሶበ ሃሳብ | Mesobe Hasab',
+          'መሶበ ሃሳብ',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: false,
         elevation: 8.0,
         backgroundColor: Color.fromRGBO(18, 17, 111, 10),
         actions: <Widget>[
-          FlatButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/info');
+          IconButton(
+            icon: Icon(Icons.info_outline),
+            onPressed: () => Navigator.pushNamed(context, '/info'),
+          ),
+          IconButton(
+            padding: EdgeInsets.fromLTRB(0, 0, 6, 0),
+              onPressed: () async {
+                await _authService.signOut();
+                Navigator.pushReplacementNamed(context,'/signIn' );
               },
-              icon: Icon(
-                Icons.info_outline,
-                color: Colors.white,
-              ),
-              label: Text(''))
+              icon: Icon(Icons.exit_to_app, color: Colors.white),
+          )
         ],
       ),
       backgroundColor: Colors.white,
@@ -57,7 +62,7 @@ class _QuoteListState extends State<QuoteList> {
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                         child: GestureDetector(
                           child: Hero(
-                            tag: 'img'+index.toString(),
+                            tag: 'img' + index.toString(),
                             child: FadeInImage(
                               placeholder: AssetImage(
                                 'assets/img/loading.gif',
@@ -66,7 +71,7 @@ class _QuoteListState extends State<QuoteList> {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          onTap: (){
+                          onTap: () {
                             Navigator.pushNamed(context, '/viewQuote',
                                 arguments: {'img': imgUrls[index]});
                           },
