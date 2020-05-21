@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mesobe_hasab/models/user.dart';
 import 'package:mesobe_hasab/pages/auth/auth_screen.dart';
 import 'package:mesobe_hasab/pages/home/home.dart';
+import 'package:provider/provider.dart';
 
 class Wrapper extends StatefulWidget {
   @override
@@ -16,6 +18,8 @@ class _WrapperState extends State<Wrapper> {
   }
   @override
   Widget build(BuildContext context) {
-    return AuthScreen();
+    final user = Provider.of<User>(context);
+    print(user);
+    return user == null ? AuthScreen() : QuoteList();
   }
 }
