@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             backgroundColor: Color.fromRGBO(246, 155, 15, 1),
           ));
     } else {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home');
       print('Signed In');
       print(anonResult.uid);
     }

@@ -53,7 +53,7 @@ class _SignInState extends State<SignIn> {
             ),
             FlatButton(
               onPressed: () async {
-                Navigator.pushNamed(context, '/loading');
+                Navigator.pushReplacementNamed(context, '/loading');
               },
               child: Text(
                 'Skip for now',
