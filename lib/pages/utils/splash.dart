@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
               FlatButton(
                 child: Text("Ok"),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(context,'/signIn');
                 },
               )
             ],
