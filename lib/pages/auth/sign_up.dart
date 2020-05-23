@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mesobe_hasab/const/app_styles.dart';
-import 'package:mesobe_hasab/const/constants.dart';
 import 'package:mesobe_hasab/services/auth_service.dart';
 
-class SignIn extends StatefulWidget {
+class SignUp extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
-
+  SignUp({this.toggleView});
   @override
-  _SignInState createState() => _SignInState();
-
+  _SignUpState createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
-
+class _SignUpState extends State<SignUp> {
   final AuthService _authService = AuthService();
-  //var email and pwd
-  String email,pwd = '';
-
+  // --> State vars
+  String email,pwd,username = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Sign In'),
+        title: Text('Sign Up'),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: AppStyles.primaryColor,
@@ -44,7 +38,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                // LOGO
+                // --> LOGO
                 Image(
 //                  color: AppStyles.primaryColor,
 //                  colorBlendMode: BlendMode.difference,
@@ -52,19 +46,31 @@ class _SignInState extends State<SignIn> {
                   width: 150,
                   height: 150,
                 ),
-                // Sign in Form
+                // --> Email and password sign in FORM
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 20.0, horizontal: 50),
                   child: Column(
                     children: <Widget>[
                       TextFormField(
+                        decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.person,
+                            color:AppStyles.secondaryColor
+                          ),
+                          labelText: '* Username',
+                          labelStyle: AppStyles.lightThemeTextColor,
+                          counterStyle: AppStyles.lightThemeTextColor,
+                        ),
+                        onChanged: (value) => {setState(() => username = value)},
+                      ),
+                      TextFormField(
                         decoration: const InputDecoration(
                           icon: Icon(
                             Icons.alternate_email,
                             color: AppStyles.secondaryColor,
                           ),
-                          labelText: '* Username/Email ',
+                          labelText: '* Email ',
                           labelStyle: AppStyles.lightThemeTextColor,
                           counterStyle: AppStyles.lightThemeTextColor,
                         ),
@@ -94,9 +100,9 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 10,
                 ),
-                // --> Sign in BUTTON
+                // --> Sign Up BUTTON
                 Padding(
                   padding: AppStyles.btnPadding,
                   child: RaisedButton(
@@ -104,6 +110,7 @@ class _SignInState extends State<SignIn> {
                     onPressed: () async {
                       print(email);
                       print(pwd);
+                      print(username);
                     },
                     splashColor: AppStyles.splashColor,
                     child: Padding(
@@ -120,7 +127,7 @@ class _SignInState extends State<SignIn> {
                             width: 5,
                           ),
                           Text(
-                            'Sign In',
+                            'Sign Up',
                             softWrap: true,
                             style: TextStyle(
                               color: Colors.white,
@@ -177,10 +184,10 @@ class _SignInState extends State<SignIn> {
                     GestureDetector(
                       onTap: () {},
                       child: Text(
-                        'Don\'t have an account?',
+                        'Have an account?',
                         style: TextStyle(
-                          color: Colors.black26,
-                          fontSize: 16,
+                          color: AppStyles.lightThemeLabelColors,
+                          fontSize: AppStyles.labelFontSize,
                         ),
                       ),
                     ),
@@ -189,16 +196,16 @@ class _SignInState extends State<SignIn> {
                         widget.toggleView();
                       },
                       child: Text(
-                        'Register',
+                        'Sign In',
                         style: TextStyle(
-                            color: Colors.black26,
-                            fontSize: 16,
+                            color: AppStyles.lightThemeLabelColors,
+                            fontSize: AppStyles.labelFontSize,
                             decoration: TextDecoration.underline),
                       ),
                     ),
                   ],
                 ),
-                // --> Anon signing link
+                // --> Anon sign in button
                 FlatButton(
                   onPressed: () async {
                     Navigator.pushReplacementNamed(context, '/loading');
@@ -220,3 +227,4 @@ class _SignInState extends State<SignIn> {
     );
   }
 }
+

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mesobe_hasab/models/user.dart';
 import 'package:mesobe_hasab/pages/auth/sign_in.dart';
+import 'package:mesobe_hasab/pages/auth/sign_up.dart';
 import 'package:mesobe_hasab/pages/template/ViewQuote.dart';
 import 'package:mesobe_hasab/pages/utils/info.dart';
 import 'package:mesobe_hasab/pages/utils/splash.dart';
@@ -21,6 +22,7 @@ void main() {
         '/': (context) => Wrapper(),
         '/loading': (context) => SplashScreen(),
         '/signIn': (context) => SignIn(),
+        '/signUp': (context) => SignUp(),
         '/home': (context) => QuoteList(),
         '/info': (context) => InfoPage(),
         '/viewQuote': (context) => ViewQuote()

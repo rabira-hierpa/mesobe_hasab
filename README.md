@@ -16,3 +16,17 @@ flutter run
 ## Demo
 
 ![Mesobe Hasaba Promo Video](./assets/promo/mesob-hasab-promo.gif)
+
+
+### Contribution
+
+If you want to contribute to this project you can view the progrss on the ora project tool
+
+[Mesobe-Hasab-Project](https://ora.pm/project/222951/kanban)
+
+### Contact Us 
+    Kiya Tolcah - tokiyatolcha@gmail.com or @KiyaTolcha (Telegram)
+    Rabra Hierpa - rabira.hierpa@gmail.com or @rebera (Telegram)
+
+### Licence
+    MIT Licence
