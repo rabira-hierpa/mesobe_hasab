@@ -11,8 +11,9 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final AuthService _authService = AuthService();
+  final _formKey = GlobalKey<FormState>();
   // --> State vars
-  String email,pwd,username = '';
+  String email,pwd,username,error = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +35,7 @@ class _SignUpState extends State<SignUp> {
 //            )
 //          ),
           child: Form(
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,6 +47,13 @@ class _SignUpState extends State<SignUp> {
                   image: AssetImage('./assets/img/logo.png'),
                   width: 150,
                   height: 150,
+                ),
+                // --> Error Message
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,5,0,0),
+                  child: Center(
+                    child: Text(error,style: AppStyles.regError,) ,
+                  ),
                 ),
                 // --> Email and password sign in FORM
                 Padding(
@@ -63,6 +72,7 @@ class _SignUpState extends State<SignUp> {
                           counterStyle: AppStyles.lightThemeTextColor,
                         ),
                         onChanged: (value) => {setState(() => username = value)},
+                        validator: (val) => val.isEmpty || val.length < 3 ? 'User name must be at least 3 characters ': null,
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
@@ -76,6 +86,8 @@ class _SignUpState extends State<SignUp> {
                         ),
                         style: AppStyles.lightThemeTextColor,
                         onChanged: (value) => {setState(() => email = value)},
+                        validator: (val) => val.isEmpty ? 'Invalid Email ': null,
+
                       ),
                       SizedBox(
                         height: 10,
@@ -95,6 +107,7 @@ class _SignUpState extends State<SignUp> {
                         onChanged: (value) {
                           setState(() => pwd = value);
                         },
+                        validator: (val) => val.length < 6 ? 'Password must be at least 6 characters': null,
                       ),
                     ],
                   ),
@@ -108,9 +121,14 @@ class _SignUpState extends State<SignUp> {
                   child: RaisedButton(
                     color: AppStyles.secondaryColor,
                     onPressed: () async {
-                      print(email);
-                      print(pwd);
-                      print(username);
+                      if(_formKey.currentState.validate()) {
+                        dynamic result = await _authService.regEmailPassword(this.email, this.pwd);
+                        if(result == null){
+                          setState(() {
+                            error = 'Error! Unable to register';
+                          });
+                        }
+                      }
                     },
                     splashColor: AppStyles.splashColor,
                     child: Padding(
