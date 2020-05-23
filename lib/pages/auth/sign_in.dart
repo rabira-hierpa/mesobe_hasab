@@ -16,8 +16,9 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
 
   final AuthService _authService = AuthService();
+  final  _formState = GlobalKey<FormState>();
   //var email and pwd
-  String email,pwd = '';
+  String email,pwd,error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class _SignInState extends State<SignIn> {
 //            )
 //          ),
           child: Form(
+            key: _formState,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -51,6 +53,13 @@ class _SignInState extends State<SignIn> {
                   image: AssetImage('./assets/img/logo.png'),
                   width: 150,
                   height: 150,
+                ),
+                // --> Error Message
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,5,0,0),
+                  child: Center(
+                    child: Text(error,style: AppStyles.regError,) ,
+                  ),
                 ),
                 // Sign in Form
                 Padding(
@@ -64,12 +73,13 @@ class _SignInState extends State<SignIn> {
                             Icons.alternate_email,
                             color: AppStyles.secondaryColor,
                           ),
-                          labelText: '* Username/Email ',
+                          labelText: '* Email ',
                           labelStyle: AppStyles.lightThemeTextColor,
                           counterStyle: AppStyles.lightThemeTextColor,
                         ),
                         style: AppStyles.lightThemeTextColor,
                         onChanged: (value) => {setState(() => email = value)},
+                        validator: (val) => val.isEmpty ? 'username is required': null ,
                       ),
                       SizedBox(
                         height: 10,
@@ -89,6 +99,7 @@ class _SignInState extends State<SignIn> {
                         onChanged: (value) {
                           setState(() => pwd = value);
                         },
+                        validator: (val) => val.isEmpty ? 'Password is required ': null,
                       ),
                     ],
                   ),
@@ -102,8 +113,18 @@ class _SignInState extends State<SignIn> {
                   child: RaisedButton(
                     color: AppStyles.secondaryColor,
                     onPressed: () async {
-                      print(email);
-                      print(pwd);
+                      if(_formState.currentState.validate()){
+                        dynamic result = await _authService.signEmailPassword(email, pwd);
+                        if(result == null){
+                          setState(() {
+                            error = 'Error! Unable to sign in';
+                          });
+                        }else{
+                          setState(() {
+                            error = '';
+                          });
+                        }
+                      }
                     },
                     splashColor: AppStyles.splashColor,
                     child: Padding(
