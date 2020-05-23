@@ -5,15 +5,19 @@ import 'package:mesobe_hasab/const/constants.dart';
 import 'package:mesobe_hasab/services/auth_service.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleView;
+  SignIn({this.toggleView});
+
   @override
   _SignInState createState() => _SignInState();
+
 }
 
 class _SignInState extends State<SignIn> {
+
   final AuthService _authService = AuthService();
   //var email and pwd
-  String email = '';
-  String pwd = '';
+  String email,pwd = '';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class _SignInState extends State<SignIn> {
                   width: 150,
                   height: 150,
                 ),
-                // Email and password sign in Form
+                // Sign in Form
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       vertical: 20.0, horizontal: 50),
@@ -90,17 +94,21 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 40,
                 ),
-                // Email and password sign in button
+                // --> Sign in BUTTON
                 Padding(
                   padding: AppStyles.btnPadding,
                   child: RaisedButton(
                     color: AppStyles.secondaryColor,
-                    onPressed: () {},
+                    onPressed: () async {
+                      print(email);
+                      print(pwd);
+                    },
+                    splashColor: AppStyles.splashColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 8.0),
+                          vertical: 12.0, horizontal: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -127,27 +135,26 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                // Google sign in button
+                // --> Google sign in button
                 Padding(
                   padding: AppStyles.btnPadding,
                   child: RaisedButton(
                     color: AppStyles.secondaryColor,
-                    onPressed: () {},
+                    onPressed: () {
+                    },
+                    splashColor: AppStyles.splashColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Icon(
-                            Icons.email,
-                            color: AppStyles.primaryColor,
-                          ),
+                          Image.asset('./assets/icons/google_icon.png',width: 30,height:30,),
                           SizedBox(
                             width: 5,
                           ),
                           Text(
-                            'Google Sign In',
+                            'Google',
                             maxLines: 3,
                             softWrap: true,
                             style: TextStyle(
@@ -163,7 +170,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                 ),
-                // Anon sign in button
+                // --> Register Link
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -178,7 +185,9 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        widget.toggleView();
+                      },
                       child: Text(
                         'Register',
                         style: TextStyle(
@@ -189,6 +198,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ],
                 ),
+                // --> Anon signing link
                 FlatButton(
                   onPressed: () async {
                     Navigator.pushReplacementNamed(context, '/loading');
