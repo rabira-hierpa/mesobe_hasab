@@ -73,7 +73,7 @@ class _QuoteListState extends State<QuoteList> {
                           ),
                           onTap: () {
                             Navigator.pushNamed(context, '/viewQuote',
-                                arguments: {'img': imgUrls[index]});
+                                arguments: {'img': imgUrls[index],'imgLength':imgUrls.length});
                           },
                         )));
               },
