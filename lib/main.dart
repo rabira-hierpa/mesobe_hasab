@@ -3,6 +3,7 @@ import 'package:mesobe_hasab/models/user.dart';
 import 'package:mesobe_hasab/pages/auth/sign_in.dart';
 import 'package:mesobe_hasab/pages/auth/sign_up.dart';
 import 'package:mesobe_hasab/pages/template/ViewQuote.dart';
+import 'package:mesobe_hasab/pages/ViewQuote.dart';
 import 'package:mesobe_hasab/pages/utils/info.dart';
 import 'package:mesobe_hasab/pages/utils/splash.dart';
 import 'package:mesobe_hasab/services/auth_service.dart';
