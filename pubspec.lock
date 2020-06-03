@@ -184,6 +184,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.12"
+<<<<<<< Updated upstream
   js:
     dependency: transitive
     description:
@@ -191,6 +192,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.1+1"
+=======
+>>>>>>> Stashed changes
   matcher:
     dependency: transitive
     description:
@@ -219,13 +222,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
-  pedantic:
-    dependency: transitive
-    description:
-      name: pedantic
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.8.0+1"
   petitparser:
     dependency: transitive
     description:
@@ -337,5 +333,10 @@ packages:
     source: hosted
     version: "3.6.1"
 sdks:
+<<<<<<< Updated upstream
   dart: ">=2.7.0 <3.0.0"
   flutter: ">=1.16.0 <2.0.0"
+=======
+  dart: ">=2.6.0 <3.0.0"
+  flutter: ">=1.6.0 <2.0.0"
+>>>>>>> Stashed changes
