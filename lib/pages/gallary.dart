@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 class GalleryPage extends StatefulWidget {
   int page;
-  GalleryPage({this.page});
+  int length;
+  int index;
+  GalleryPage({this.page,this.length,this.index});
   @override
   _GalleryPageState createState() => _GalleryPageState();
 }
 
 class _GalleryPageState extends State<GalleryPage> {
-//  double page;
-//  _GalleryPageState({this.page});
+
   PageController pageController;
   List<String> imgUrls = [];
   void initState(){
     super.initState();
     pageController= PageController(initialPage: widget.page,viewportFraction: 1);
-    for (var i = 1; i <= 31; i++) {
-      imgUrls.add("assets/quotes/$i.jpg");
-    }
   }
   @override
   Widget build(BuildContext context) {
+    Map imageData = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Colors.black,
       body: PageView.builder(
           controller: pageController,
-          itemCount: imgUrls.length,
+          itemCount: imageData['length'],
           itemBuilder: (context,position){
             return imageSlider(position);
           }),
@@ -37,7 +36,6 @@ class _GalleryPageState extends State<GalleryPage> {
       builder: (context,widget){
         return Center(
           child: SizedBox(
-
             child: widget,
           ),
         );
