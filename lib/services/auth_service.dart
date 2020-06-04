@@ -29,12 +29,32 @@ class AuthService {
       return null;
     }
   }
+
+
 // Sign In/Register with Google
 
 // Sign In with Email and password
-
+  Future signEmailPassword (String email,String pwd) async{
+    try{
+      AuthResult resut = await _auth.signInWithEmailAndPassword(email: email, password: pwd);
+      FirebaseUser _signedUser = resut.user;
+      return _anonFBUser(_signedUser);
+    }catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
 // Register with email and password
-
+  Future regEmailPassword (String email,String pwd) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: pwd);
+      FirebaseUser _newFBuser = result.user;
+      return _anonFBUser(_newFBuser);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
 // Sign Out
   Future signOut() async{

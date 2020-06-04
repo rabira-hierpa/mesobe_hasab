@@ -12,7 +12,7 @@ class _QuoteListState extends State<QuoteList> {
   final AuthService _authService = AuthService();
   List<String> imgUrls = [];
   @override
-  void initState() {
+  void initState()  {
     super.initState();
     for (var i = 1; i <= 31; i++) {
       imgUrls.add("assets/quotes/$i.jpg");
@@ -73,7 +73,7 @@ class _QuoteListState extends State<QuoteList> {
                           ),
                           onTap: () {
                             Navigator.pushNamed(context, '/viewQuote',
-                                arguments: {'img': imgUrls[index]});
+                                arguments: {'img': imgUrls[index],'imgLength':imgUrls.length,'imgIndex':index});
                           },
                         )));
               },
