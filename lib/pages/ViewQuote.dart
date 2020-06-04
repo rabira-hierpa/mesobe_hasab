@@ -13,18 +13,23 @@ class _ViewQuoteState extends State<ViewQuote> {
   double _scale = 1.0;
   double _previousScale = 1.0;
   bool _doubleTap = false;
+  int imgIndex = 0;
+  int imgLength = 0;
   Map imageData = {};
 
   @override
   Widget build(BuildContext context) {
     imageData = ModalRoute.of(context).settings.arguments;
+    imgIndex = imageData['imgIndex'];
+    imgLength = imageData['imgLength'];
+    print(imageData);
     //String title=imageData['img'].length;
     GalleryPage galleryPage = GalleryPage();
 
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text('3 of 45' ),
+        title: Text('${imageData['imgIndex']} of ${imageData['imgLength']}' ),
         backgroundColor: Colors.black,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.share,color: Colors.white,), onPressed: null)
@@ -45,7 +50,6 @@ class _ViewQuoteState extends State<ViewQuote> {
               _scale = 1.0;
             else
               _previousScale = 1.0;
-
             setState(() {});
           },
           onDoubleTap: () {
@@ -55,7 +59,6 @@ class _ViewQuoteState extends State<ViewQuote> {
           },
           //vertical dragUpdate
           onVerticalDragUpdate: (DragUpdateDetails details) {
-
             if(details.delta.dy <-10)
               Navigator.pop(context);
             else if(details.delta.dy>10)
@@ -66,7 +69,7 @@ class _ViewQuoteState extends State<ViewQuote> {
             transform: Matrix4.diagonal3(vector.Vector3(_scale, _scale, _scale)),
             child: Hero(
               tag: 'img' + imageData['img'].toString(),
-              child: GalleryPage(page: 3,)
+              child: GalleryPage(page: imageData['imgIndex'],length:imageData['imgLength'],index:imageData['imgIndex'])
             ),
           ),
         ),
@@ -74,27 +77,3 @@ class _ViewQuoteState extends State<ViewQuote> {
     );
   }
 }
-
-//Stack(fit: StackFit.expand, children: <Widget>[
-//GestureDetector(
-//child: SwipeDetector(child: Image.asset(imageData['img']),
-//onSwipeLeft: (){
-//Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-//return  Scaffold(
-//appBar: AppBar(
-//title: const Text(''),
-//),body: Text("this is the Left page"),
-//);
-//}));
-//
-//},
-//onSwipeRight: (){
-//Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
-//return GalleryPage(page: imageData['img'],);
-//}));
-//},
-//
-//),
-//),
-//
-//]),
