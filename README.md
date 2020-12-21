@@ -26,7 +26,7 @@ If you want to contribute to this project you can view the progrss on the ora pr
 
 ### Contact Us 
     Kiya Tolcah - tokiyatolcha@gmail.com or @KiyaTolcha (Telegram)
-    Rabra Hierpa - rabira.hierpa@gmail.com or @rebera (Telegram)
+    Rabra Hierpa - rabira.hierpa@gmail.com or @rzcodes (Telegram)
 
 ### Licence
     MIT Licence
